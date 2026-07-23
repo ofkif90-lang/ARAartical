@@ -1,9 +1,18 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
+import Sitemap from 'vite-plugin-sitemap'
 
 export default defineConfig({
   plugins: [
     react(),
+
+    Sitemap({
+      hostname: 'https://araartical.vercel.app',
+      exclude: [
+        '/google55e2cfdb79c0b019'
+      ],
+    }),
+
     {
       name: 'security-headers',
       configureServer(server) {
@@ -18,6 +27,7 @@ export default defineConfig({
       },
     },
   ],
+
   server: {
     host: true,
     port: 5173,
